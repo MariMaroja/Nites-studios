@@ -1,0 +1,26 @@
+{% block content %}
+            <section class="content">
+                <section class="video">
+                    <div class="video__content">
+                        {% if video.thumb == "" or video.thumb == null %}
+                        <img class="image__image" src="{% static 'assets/images/gallery/not-found.png' %}">
+                        {% else %}
+                        <img class="image__image" src="{{video.thumb.url}}">
+                        {% endif %}
+                        <div class="video__info">
+                            <div class="video__text">
+                                <p class="video__title">{{video.title}}</p>
+                                <video class="video__video" src="{{video.video.url}}">{{video.video}}</video>
+                                <p class="video__narration">{{video.narration}}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'edit_video' video.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Edit</button></a>
+                                <a href="{% url 'delete_video' video.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

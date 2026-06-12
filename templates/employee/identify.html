@@ -1,0 +1,21 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="content">
+                <section class="identify">
+                    <div class="identify__content">
+                        <div class="identify_info">
+                            <div class="identify_text">
+                                <p class="identify_identify">{{identify.identity}}</p>
+                                <p class="identify_post">{{identify.post}}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'delete_identity' identify.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

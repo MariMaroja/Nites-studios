@@ -1,0 +1,28 @@
+{% load static %}
+<div class="initial-page">
+    <header class="header">
+        <img src="" alt="nites studios">
+        {% include 'partials/_alerts.html' %}
+        <div class="header_search">
+            <div class="search_back">
+                <form action="{% url 'search' %}">
+                    <input class="search_input" type="text" name="search" placeholder="Search">
+                    <button type="submit">
+                        <img class="search_icon" src="{% static 'assets/icons/search.png' %}" alt="search icon">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+    <main class="principal">
+        <section class="side-menu">
+            <nav class="side-menu__navigation">
+                <a href="{% url 'index' %}"><img src="{% static 'assets/icons/home' %}"> Home </a>
+                <a href="{% url 'login' %}"><img src="{% static 'assets/icons/login' %}"> Login </a>
+                <a href="{% url 'register' %}"><img src="{% static 'assets/icons/register'%}"> Register </a>
+                <a href="{% url 'about_us' %}"><img src="{% static 'assets/icons/about' %}"> About Us </a>
+                <a href="{% url 'logout' %}"><img src="{% static 'assets/icons/logout' %}"> Logout </a>
+            </nav>
+        </section>
+    </main>
+</div>

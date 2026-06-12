@@ -1,0 +1,28 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="content">
+                <section class="about">
+                    <div class="about__content">
+                        {% if about.profile == "" or about.profile == null %}
+                        <img class="image__image" src="{% static 'assets/image/gallery/not-found.png' %}">
+                        {% else %}
+                        <img class="image__image" src="{{about.profile.url}}">
+                        {% endif %}
+                        <div class="about_info">
+                            <div class="about_text">
+                                <p class="about_name">{{about.name}}</p>
+                                <p class="about_text">{{about.text}}</p>
+                                <p class="about_role">{{about.role}}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'edit_about' about.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Edit</a>
+                                <a href="{% url 'delete_about' about.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

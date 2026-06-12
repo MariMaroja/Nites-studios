@@ -1,0 +1,29 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="content">
+                <section class="character">
+                    <div class="character__content">
+                        {% if character.image == "" or character.image == null %}
+                        <img class="image__image" src="{% static 'assets/image/gallery/not-found.png' %}">
+                        {% else %}
+                        <img class="image__image" src="{{character.image.url}}">
+                        {% endif %}
+                        <div class="character_info">
+                            <div class="character_text">
+                                <p class="character_name">{{character.name}}</p>
+                                <p class="character_game">{{character.game}}</p>
+                                <p class="character_category">{{character.category}}</p>
+                                <p class="character_description">{{character.description}}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'edit_image' character.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Edit</button></a>
+                                <a href="{% url 'delete_image' character.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

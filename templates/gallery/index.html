@@ -1,0 +1,56 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="content">
+                <section class="banner">
+                    <video class="banner__video" src="{% static 'assets/video/Banner.avi' %}">Nite's studios</video>
+                    <h1 class="banner__title">Nite's studios</h1>
+                </section>
+                <section class="gallery">
+                    <div class="cards">
+                        <h2 class="cards__title">Search through the gallery</h2>
+                        <ul class="cards__list">
+                            {% if cards %}
+                            {% for content in cards %}
+                            <li class="card">
+                                <a href="{% url 'image' character.id %}">
+                                {% if character.image == "" or character.image == null %}
+                                    <img class="card__image" src="{% static 'assets/images/gallery/not-found.png' %}" alt="image">
+                                {% else %}
+                                    <img class="card__image" src="{{ character.image.url }}" alt="image">
+                                {% endif %}
+                                </a>
+                                <div class="card__info">
+                                    <p class="cards__title">{{character.name}}</p>
+                                </div>
+                                <a href="{% url 'thumb' video.id %}">
+                                {% if video.image == "" or video.image == null %}
+                                    <img class="card__image" src="{% static 'assets/images/gallery/not-found.png' %}" alt="image">
+                                {% else %}
+                                    <img class="card__image" src="{{ video.thumb.url }}" alt="image">
+                                {% endif %}
+                                </a>
+                                <div class="card__info">
+                                    <p class="cards__title">{{video.title}}</p>
+                                </div>
+                                <a href="{% url 'photo' synopsis.id %}">
+                                {% if synopsis.photo == "" or synopsis.photo == null %}
+                                    <img class="card__image" src="{% static 'assets/images/gallery/not-found.png' %}" alt="image">
+                                {% else %}
+                                    <img class="card__image" src="{{ synopsis.photo.url }}" alt="image">
+                                {% endif %}
+                                </a>
+                                <div class="card__info">
+                                    <p class="cards__title">{{synopsis.text}}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            {% else %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}

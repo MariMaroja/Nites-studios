@@ -1,0 +1,27 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+            <section class="content">
+                <section class="synopsis">
+                    <div class="synopsis__content">
+                        {% if synopsis.photo == "" or synopsis.photo == null %}
+                        <img class="image__image" src="{% assets/image/gallery/not-found.png %}">
+                        {% else %}
+                        <img class="image__image" src="{{synopsis.photo.url}}">
+                        {% endif %}
+                        <div class="synopsis__info">
+                            <div class="synopsis__texto">
+                                <p class="synopsis__text">{{synopsis.text}}</p>
+                                <p class="synopsis__game">{{synopsis.games}}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'edit_synopsis' synopsis.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Edit</button></a>
+                                <a href="{% url 'delete_synopsis' synopsis.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Delete</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+{% endblock %}
